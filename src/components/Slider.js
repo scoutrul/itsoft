@@ -1,5 +1,22 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
+
+const sizes = {
+  unlim: 10000,
+  desktop: 992,
+  tablet: 1100,
+  phone: 420
+}
+
+const media = Object.keys(sizes).reduce((acc, label) => {
+  acc[label] = (...args) => css`
+    @media (max-width: ${sizes[label]}px) {
+      ${css(...args)}
+    }
+  `
+  return acc
+}, {})
+
 
 const SliderStyled = styled.div`
   display: flex;
@@ -8,6 +25,8 @@ const SliderStyled = styled.div`
   overflow: hidden;
   position: relative;
   height: 510px;
+  ${media.tablet`
+  flex-flow: row wrap`} 
   .title {
     font-size: 45px;
     font-weight: 700
@@ -66,8 +85,8 @@ const SliderStyled = styled.div`
 
 export const Slider = () => 
   <SliderStyled>
-    <div className='left'><img src='/images/icon_arrow.png'/></div>
-    <div className='right'><img src='/images/icon_arrow.png'/></div>
+    <div className='left'><img src='/images/icon_arrow.png' alt=''/></div>
+    <div className='right'><img src='/images/icon_arrow.png' alt=''/></div>
     <div className='column'>
       <div className='title'>В чем причина ухудшения зрения?</div>
       <div className='text'>Любой свет, особенно интенсивный искусственный, повреждает глаза. Световые лучи, проходя сквозь глаз, фокусируются на сетчатке в области желтого пятна - особой области, которая отвечает за максимальную остроту зрения</div>

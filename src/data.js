@@ -6,6 +6,7 @@ export const data = {
       picture2: '/images/glaz12.png',
       title: 'Защита глаз',
       title2: 'при интенсивных нагрузках',
+      title3: 'Усталость',
       products: [
         {
           title: 'Лютеин',
@@ -23,6 +24,7 @@ export const data = {
       picture2: '/images/glaz22.png',
       title: 'укрепление сосудов',
       title2: 'глаз',
+      title3: 'Покраснение',
       products: [
         {
           title: 'Лютеин',
@@ -40,6 +42,7 @@ export const data = {
       picture2: '/images/glaz32.png',
       title: 'Защита здорового зрения',
       title2: 'на долгие годы',
+      title3: 'Защита',
       products: [
         {
           title: 'Лютеин',
@@ -57,6 +60,7 @@ export const data = {
       picture2: '/images/glaz42.png',
       title: 'Снижение риска развития',
       title2: 'возрастных изменений глаз',
+      title3: 'Профилактика',
       products: [
         {
           title: 'Лютеин',

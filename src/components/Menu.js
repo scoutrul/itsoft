@@ -1,12 +1,38 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 
 import {data} from '../data.js'
+
+const sizes = {
+  tablet: 1000,
+}
+
+const media = Object.keys(sizes).reduce((acc, label) => {
+  acc[label] = (...args) => css`
+    @media (max-width: ${sizes[label]}px) {
+      ${css(...args)}
+    }
+  `
+  return acc
+}, {})
 
 const MenuStyled = styled.div`
   background-color: #005494;
   min-width: 210px;
   padding: 20px 25px;
+
+  ${media.tablet`
+  position: fixed;
+  height: 100vh;
+  min-height: 100%;
+  top:0;
+  left: 0;
+  transform: ${props => props.menuTogger ? 'translateX(0px)':'translateX(-260px)'};
+  ${props => props.menuTogger && `
+  + div {
+    transform: translateX(260px)
+  }`}
+  z-index: 10;`}  
 `
 const Social = styled.div`
   img {
@@ -33,8 +59,8 @@ const Ul = styled.ul`
   }
 `
 
-export const Menu = () => 
-  <MenuStyled>
+export const Menu = ({menuTogger}) => 
+  <MenuStyled menuTogger={menuTogger}>
     <Social>
       <a href="#f"><img src='/images/icon_f.png' alt=''/></a>
       <a href="#t"><img src='/images/icon_t.png' alt=''/></a>

@@ -40,6 +40,13 @@ const GlazStyled = styled.div`
     font-size: 16px;
     line-height: 100%;
   }
+  h3 {
+    opacity: 0;
+    font-size: 24px;
+    text-align: right;
+    color: #FFF
+  }
+
   ${media.unlim`
     max-width: 50%;`}
   ${media.tablet`
@@ -50,31 +57,60 @@ const GlazStyled = styled.div`
     h2 {
       font-size: 12px
     }
+  
   `}
   .products {
-    opacity: 0
+    opacity: 0;
+    a {
+      position: relative;
+      span { 
+        font-size: 13px;
+        opacity: 0;
+        position: absolute;
+        top: -40px;
+        left: 30px;
+        padding: 0 20px;
+        line-height: 40px;
+        color: #4282ad;
+        display: block;
+        background-color: white;
+        border-radius: 30px;
+        white-space: nowrap;
+        z-index: 10;
+      }
+      &:hover {
+        span { opacity: 1}
+      }
+    }
   }
   &:hover {
     background-image: url(${props => props.picture2});
+    h2 {opacity: 0}
+    h3 {opacity: .5}
     .products {
       opacity: 1
     }
   }
+
 `
 export const Glaza = styled.div`
   display: flex;
   flex-flow: row wrap;
 `
 
-export const Glaz = ({bgcolor, title, title2, picture, picture2, products}) => 
+export const Glaz = ({bgcolor, title, title2, title3, picture, picture2, products}) => 
   <GlazStyled bgcolor={bgcolor} picture={picture} picture2={picture2}> 
     <div>
       <h2>{title}</h2>
       <h2>{title2}</h2>
+      <h3>{title3}</h3>
     </div>
     <div className='products'>
-      {products && products.map(({title, src})=>
-        <img src={src} alt={title} title={title} key={src}/>
+      {products && products.map(({title, src}, i)=>
+        <a href={title} key={i}>
+          <img src={src} alt={title} title={title} key={src}/>
+          <span>{title}</span>
+        </a>
       )} 
     </div>
    </GlazStyled>
@@ -84,7 +120,7 @@ export const GlazComp = () =>
   {data.glaza.map((item,i) => 
       <Glaz key={i} bgcolor={item.bgcolor} 
         picture={item.picture} picture2={item.picture2}  
-        title={item.title} title2={item.title2} 
+        title={item.title} title2={item.title2} title3={item.title3} 
         products={item.products}/>
   )}
 </Glaza>

@@ -1,5 +1,21 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
+
+const sizes = {
+  unlim: 10000,
+  desktop: 992,
+  tablet: 1100,
+  phone: 420
+}
+
+const media = Object.keys(sizes).reduce((acc, label) => {
+  acc[label] = (...args) => css`
+    @media (max-width: ${sizes[label]}px) {
+      ${css(...args)}
+    }
+  `
+  return acc
+}, {})
 
 const TabsStyled = styled.div`
   padding: 50px;
@@ -46,6 +62,18 @@ const TabsStyled = styled.div`
 const Content = styled.div`
   display: flex;
   font-size: 14px;
+  position: relative;
+  ${media.tablet`
+  flex-flow: column wrap;
+  .left {
+    transform: translateX(-100px);
+    position: absolute;
+    z-index: 0;
+  }
+  .right {
+    z-index: 5
+  }`} 
+
   h3 {
     font-size: 24px;
   }

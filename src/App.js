@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import styled from 'styled-components'
 
 import {TopPanel} from './components/TopPanel'
@@ -17,22 +18,37 @@ const AppStyled = styled.div`
 const Content = styled.div`
   display: flex;
   flex-flow: column;
+  overflow-y: scroll;
 `
 
+
 class App extends Component {
+
+  state = {
+    menu: false
+  }
+
+  openMenu = () => this.setState(({menu}) => {
+    return {menu: !menu}
+  })
+
+  componentDidUpdate(){
+    console.log(this.state)
+  }
+
   render() {
     return (
       <AppStyled>
-        <Menu/>
-        <Content>
-          <TopPanel/>
-          <GlazComp/>
-          <Slider/>
-          <GroupsTabs/>
-          <Info/>
-          <Disclamer/>
-          <Footer/>
-        </Content>
+          <Menu menuTogger={this.state.menu}/>
+          <Content>
+            <TopPanel menuTogger={this.openMenu}/>
+            <GlazComp/>
+            <Slider/>
+            <GroupsTabs/>
+            <Info/>
+            <Disclamer/>
+            <Footer/>
+          </Content>
       </AppStyled>
     );
   }
