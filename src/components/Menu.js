@@ -1,7 +1,7 @@
 import React from 'react';
-import styled, {css} from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import {data} from '../data.js'
+import { data } from '../data.js'
 
 const sizes = {
   tablet: 1000,
@@ -27,10 +27,12 @@ const MenuStyled = styled.div`
   min-height: 100%;
   top:0;
   left: 0;
-  transform: ${props => props.menuTogger ? 'translateX(0px)':'translateX(-260px)'};
+  transform: ${props => props.menuTogger ? 'translateX(0px)' : 'translateX(-260px)'};
+  transition: .2s ease;
   ${props => props.menuTogger && `
   + div {
-    transform: translateX(260px)
+    transform: translateX(260px);
+
   }`}
   z-index: 10;`}  
 `
@@ -59,24 +61,26 @@ const Ul = styled.ul`
   }
 `
 
-export const Menu = ({menuTogger}) => 
-  <MenuStyled menuTogger={menuTogger}>
+export const Menu = ({ menuTogger }) => {
+  return <MenuStyled menuTogger={menuTogger}>
     <Social>
-      <a href="#f"><img src='/images/icon_f.png' alt=''/></a>
-      <a href="#t"><img src='/images/icon_t.png' alt=''/></a>
-      <a href="#s"><img src='/images/icon_s.png' alt=''/></a>
+      <a href="#f"><img src='/images/icon_f.png' alt='' /></a>
+      <a href="#t"><img src='/images/icon_t.png' alt='' /></a>
+      <a href="#s"><img src='/images/icon_s.png' alt='' /></a>
     </Social>
     <Ul>
-      {data.menu.map(({title, url},i) => 
+      {data.menu.map(({ title, url }, i) =>
         <li key={i}><a href={url}>{title}</a></li>
       )}
     </Ul>
-    <hr/>
+    <hr />
     <span>
-      Горячая линия <br/>по России
+      Горячая линия <br />по России
     </span>
     <div>
       <strong>8-800-000-00-00 </strong>
     </div>
 
   </MenuStyled>
+
+}

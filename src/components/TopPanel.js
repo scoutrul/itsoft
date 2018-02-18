@@ -1,5 +1,7 @@
-import React from 'react';
-import styled, {css} from 'styled-components'
+import React, { Component } from 'react';
+import styled, { css } from 'styled-components'
+
+import Modal from './Modal'
 
 const sizes = {
   tablet: 1000,
@@ -27,15 +29,42 @@ const TopPanelStyled = styled.div`
   }
 `
 
-export const TopPanel = ({menuTogger}) => 
-  <TopPanelStyled>
-    <div className='menuTogger' onClick={menuTogger}>menuTogger</div>
-    <div className='logos'>
-      <img src="/images/logo_lomb.png" alt=''/> | 
-      <img src="/images/logo_val.png" alt=''/>
-    </div>
-    <div className='feedback'>
-      <img src="/images/icon_feedback.png" alt=''/> 
-      <span>Задать вопрос производителю</span>
-    </div>
-  </TopPanelStyled>
+export class TopPanel extends Component {
+
+  state = {
+    modal: false
+  }
+
+  modalToggle = (e) => {
+    this.setState(({modal})=>{
+      return {modal: !modal} })
+  }
+
+  render() {
+    return (
+      <TopPanelStyled>
+        <div className='menuTogger' onClick={this.props.menuTogger}>menuTogger</div>
+        <div className='logos'>
+          <img src="/images/logo_lomb.png" alt='' /> |
+         <img src="/images/logo_val.png" alt='' />
+        </div>
+        <div className='feedback'>
+          <img src="/images/icon_feedback.png" alt='' />
+          <span onClick={this.modalToggle}>Задать вопрос производителю</span>
+          {this.state.modal && <Modal>
+            <div className='container' onClick={this.modalToggle}>
+              <div className='body' onClick={(e)=>e.stopPropagation()}>
+                <form>
+                  <input />
+                  <input />
+                </form>
+                <div onClick={this.modalToggle}>Close</div>
+              </div>
+            </div>
+          </Modal>}
+        </div>
+      </TopPanelStyled>
+    )
+  }
+
+}
