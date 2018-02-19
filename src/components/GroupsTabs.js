@@ -1,5 +1,5 @@
-import React from 'react';
-import styled, {css} from 'styled-components'
+import React, { Component } from 'react';
+import styled, { css } from 'styled-components'
 
 const sizes = {
   unlim: 10000,
@@ -79,24 +79,74 @@ const Content = styled.div`
   }
 `
 
-export const GroupsTabs = () => 
-  <TabsStyled>
-    <h1>Группы риска:</h1>
-    <Content>
-      <div className='left'>
-        <img src='/images/tab_img.png' alt=''/>
-      </div>
-      <div className='right'>
-        <h3>Школьники и студенты</h3>
-        <p>В последнее десятилетие врачи отмечают печальную тенденцию: все чаще у детей школьного возраста выявляются болезни органов зрения. Сложный оптический прибор, идеально приспосабливающийся к изменчивым условиям окружающей среды, глаз оказался не подготовленным к современным реалиям.</p>
-        <button>Подробнее</button>
-      </div>
-    </Content>
-    <ul className='frames'>
-      <li>Работающие за компьютером</li>
-      <li className='active'>Школьники и студенты</li>
-      <li>Автолюбители</li>
-      <li>Люди с повышенными зрительными нагрузками</li>
-      <li>Туристы</li>
-    </ul>
-  </TabsStyled>
+export class GroupsTabs extends Component {
+  state = {
+    currTab: 1,
+    tabsName: ['Работающие за компьютером', 'Школьники и студенты', 'Автолюбители', 'Люди с повышенными зрительными нагрузками', 'Туристы'],
+    tabs: [
+      <Content>
+        <div className='left'>
+          <img src='/images/tab_img.png' alt='' />
+        </div>
+        <div className='right'>
+          <h3>Работающие за компьютером</h3>
+        </div>
+      </Content>,
+      <Content>
+        <div className='left'>
+          <img src='/images/tab_img.png' alt='' />
+        </div>
+        <div className='right'>
+          <h3>Школьники и студенты</h3>
+          <p>В последнее десятилетие врачи отмечают печальную тенденцию: все чаще у детей школьного возраста выявляются болезни органов зрения. Сложный оптический прибор, идеально приспосабливающийся к изменчивым условиям окружающей среды, глаз оказался не подготовленным к современным реалиям.</p>
+          <button>Подробнее</button>
+        </div>
+      </Content>,
+      <Content>
+        <div className='left'>
+          <img src='/images/tab_img.png' alt='' />
+        </div>
+        <div className='right'>
+          <h3>Автолюбители</h3>
+        </div>
+      </Content>,
+      <Content>
+        <div className='left'>
+          <img src='/images/tab_img.png' alt='' />
+        </div>
+        <div className='right'>
+          <h3>Люди с повышенными зрительными нагрузками</h3>
+        </div>
+      </Content>,
+      <Content>
+        <div className='left'>
+          <img src='/images/tab_img.png' alt='' />
+        </div>
+        <div className='right'>
+          <h3>Туристы</h3>
+        </div>
+      </Content>
+    ]
+  }
+
+  changeli = (i) => {
+    this.setState({ currTab: i });
+  }
+
+  render() {
+    return (
+      <TabsStyled>
+        <h1>Группы риска:</h1>
+
+        {this.state.tabs[this.state.currTab]}
+
+        <ul className='frames'>
+          {this.state.tabsName.map((item, i) =>
+            <li key={i} className={this.state.currTab === i ? 'active' : ''} onClick={() => this.changeli(i)}>{item}</li>
+          )}
+        </ul>
+
+      </TabsStyled>
+    )
+  }
+}
