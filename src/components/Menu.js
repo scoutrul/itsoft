@@ -64,9 +64,9 @@ const Ul = styled.ul`
 export const Menu = ({ menuTogger }) => {
   return <MenuStyled menuTogger={menuTogger}>
     <Social>
-      <a href="#f"><img src='/images/icon_f.png' alt='' /></a>
-      <a href="#t"><img src='/images/icon_t.png' alt='' /></a>
-      <a href="#s"><img src='/images/icon_s.png' alt='' /></a>
+      <a href="#f"><img src='./images/icon_f.png' alt='' /></a>
+      <a href="#t"><img src='./images/icon_t.png' alt='' /></a>
+      <a href="#s"><img src='./images/icon_s.png' alt='' /></a>
     </Social>
     <Ul>
       {data.menu.map(({ title, url }, i) =>

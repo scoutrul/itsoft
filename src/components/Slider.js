@@ -141,8 +141,8 @@ export class Slider extends Component {
     return (
 
       <SliderStyled>
-        <div className={`left ${this.state.currSlide === 0 ? 'unactive' : ''}`} onClick={() => this.changeSlide(-1)}><img src='/images/icon_arrow.png' alt='' /></div>
-        <div className={`right ${this.state.currSlide === this.state.slides.length - 1 ? 'unactive' : ''}`} onClick={() => this.changeSlide(1)}><img src='/images/icon_arrow.png' alt='' /></div>
+        <div className={`left ${this.state.currSlide === 0 ? 'unactive' : ''}`} onClick={() => this.changeSlide(-1)}><img src='./images/icon_arrow.png' alt='' /></div>
+        <div className={`right ${this.state.currSlide === this.state.slides.length - 1 ? 'unactive' : ''}`} onClick={() => this.changeSlide(1)}><img src='./images/icon_arrow.png' alt='' /></div>
 
         {this.state.slides[this.state.currSlide]}
 
