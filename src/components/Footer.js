@@ -15,7 +15,7 @@ const Styled = styled.div`
 export const Footer = () => 
   <Styled>
     <div>
-      <img src='/images/logo_val.png' alt=''/>
+      <img src='./images/logo_val.png' alt=''/>
     </div>
     <div>
       ООО «ВАЛЕАНТ», 115162, г. Москва, ул. Шаболовка, д. 31, стр. 5<br/>
@@ -23,7 +23,7 @@ export const Footer = () =>
     </div>
 
     <div>
-      <img src='/images/logo_itsoft.png' alt=''/>
+      <img src='./images/logo_itsoft.png' alt=''/>
       <div>
         <a href="http://itsoft.ru" target='_blank' rel='noopener noreferrer'>Создание сайта.</a>
         <span>Веб-студия itsoft</span>

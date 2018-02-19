@@ -53,11 +53,11 @@ export class TopPanel extends Component {
       <TopPanelStyled>
         <div className='menuTogger' onClick={this.props.menuTogger}>&#9776;</div>
         <div className='logos'>
-          <img src="/images/logo_lomb.png" alt='' /> |
-         <img src="/images/logo_val.png" alt='' />
+          <img src="./images/logo_lomb.png" alt='' /> |
+         <img src="./images/logo_val.png" alt='' />
         </div>
         <div className='feedback'>
-          <img src="/images/icon_feedback.png" alt='' />
+          <img src="./images/icon_feedback.png" alt='' />
           <span onClick={this.modalToggle}>Задать вопрос производителю</span>
           {this.state.modal && <Modal>
             <div className='container' onClick={this.modalToggle}>
