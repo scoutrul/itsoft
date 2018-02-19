@@ -85,16 +85,14 @@ export class GroupsTabs extends Component {
     tabsName: ['Работающие за компьютером', 'Школьники и студенты', 'Автолюбители', 'Люди с повышенными зрительными нагрузками', 'Туристы'],
     tabs: [
       <Content>
-        <div className='left'>
-          <img src='/images/tab_img.png' alt='' />
-        </div>
+
         <div className='right'>
           <h3>Работающие за компьютером</h3>
         </div>
       </Content>,
       <Content>
         <div className='left'>
-          <img src='/images/tab_img.png' alt='' />
+          <img src='./images/tab_img.png' alt='' />
         </div>
         <div className='right'>
           <h3>Школьники и студенты</h3>
@@ -103,25 +101,19 @@ export class GroupsTabs extends Component {
         </div>
       </Content>,
       <Content>
-        <div className='left'>
-          <img src='/images/tab_img.png' alt='' />
-        </div>
+
         <div className='right'>
           <h3>Автолюбители</h3>
         </div>
       </Content>,
       <Content>
-        <div className='left'>
-          <img src='/images/tab_img.png' alt='' />
-        </div>
+
         <div className='right'>
           <h3>Люди с повышенными зрительными нагрузками</h3>
         </div>
       </Content>,
       <Content>
-        <div className='left'>
-          <img src='/images/tab_img.png' alt='' />
-        </div>
+
         <div className='right'>
           <h3>Туристы</h3>
         </div>

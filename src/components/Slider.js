@@ -107,7 +107,7 @@ export class Slider extends Component {
           <div className='text'>Любой свет, особенно интенсивный искусственный, повреждает глаза. Световые лучи, проходя сквозь глаз, фокусируются на сетчатке в области желтого пятна - особой области, которая отвечает за максимальную остроту зрения</div>
         </div>
         <div className='column'>
-          <img src='/images/slider_glaz.png' alt='' />
+          <img src='./images/slider_glaz.png' alt='' />
         </div>
       </div>,
       <div className='content'>
