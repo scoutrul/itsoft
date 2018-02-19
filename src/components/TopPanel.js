@@ -23,10 +23,14 @@ const TopPanelStyled = styled.div`
   min-height: 45px;
   align-items: center;
   padding: 0 25px;
+  .feedback {
+    cursor: pointer;
+  }
   .menuTogger {
-    visibility: hidden;
+    display: none;
+    cursor: pointer;
     ${media.tablet`
-    visibility: visible`
+    display: block`
   }
 `
 
@@ -47,7 +51,7 @@ export class TopPanel extends Component {
 
     return (
       <TopPanelStyled>
-        <div className='menuTogger' onClick={this.props.menuTogger}>menuTogger</div>
+        <div className='menuTogger' onClick={this.props.menuTogger}>&#9776;</div>
         <div className='logos'>
           <img src="/images/logo_lomb.png" alt='' /> |
          <img src="/images/logo_val.png" alt='' />

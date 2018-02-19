@@ -34,6 +34,11 @@ const InfoStyled = styled.div`
 const Container = styled.div`
     padding: 85px 35px 45px 35px;
     background-image: url(${props => props.bgimg});
+    background-repeat: no-repeat;
+    background-size: cover;
+    h3 {
+      font-size: 24px
+    }
     .info {
       display: flex;
       align-items: flex-start;

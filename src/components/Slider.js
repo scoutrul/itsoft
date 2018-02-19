@@ -37,6 +37,7 @@ const SliderStyled = styled.div`
       font-size: 20px;
       margin: 50px 0 0 50px;
       font-weight: 300;
+      line-height: 135%;
     }
   }
   .left,.right {
@@ -47,6 +48,7 @@ const SliderStyled = styled.div`
     top: calc(50% - 60px);
     display: flex;
     align-items: center;
+    cursor: pointer;
   }
   .left {
     left: -60px;
@@ -85,6 +87,7 @@ const SliderStyled = styled.div`
       margin: 0 10px;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
       &.active {
         border-color: #FFF
       }
@@ -97,27 +100,28 @@ export class Slider extends Component {
 
   state = {
     currSlide: 0,
-    slides: [<div className='content'><div className='column'>
-      <div className='title'>В чем причина ухудшения зрения?</div>
-      <div className='text'>Любой свет, особенно интенсивный искусственный, повреждает глаза. Световые лучи, проходя сквозь глаз, фокусируются на сетчатке в области желтого пятна - особой области, которая отвечает за максимальную остроту зрения</div>
-    </div>
-      <div className='column'>
-        <img src='/images/slider_glaz.png' alt='' />
-      </div></div>,
-    <div className='content'><div className='column'>
-      <div className='title'>зрения причина ухудшения В чем?</div>
-      <div className='text'>Любой свет, особенно интенсивный искусственный, повреждает глаза. Световые лучи, проходя сквозь глаз, фокусируются на сетчатке в области желтого пятна - особой области, которая отвечает за максимальную остроту зрения</div>
-    </div>
-      <div className='column'>
-        <img src='/images/slider_glaz.png' alt='' />
-      </div></div>,
-    <div className='content'><div className='column'>
-      <div className='title'>причина ухудшения зрения В чем ?</div>
-      <div className='text'>Любой свет, особенно интенсивный искусственный, повреждает глаза. Световые лучи, проходя сквозь глаз, фокусируются на сетчатке в области желтого пятна - особой области, которая отвечает за максимальную остроту зрения</div>
-    </div>
-      <div className='column'>
-        <img src='/images/slider_glaz.png' alt='' />
-      </div></div>]
+    slides: [
+      <div className='content'>
+        <div className='column'>
+          <div className='title'>В чем причина ухудшения зрения?</div>
+          <div className='text'>Любой свет, особенно интенсивный искусственный, повреждает глаза. Световые лучи, проходя сквозь глаз, фокусируются на сетчатке в области желтого пятна - особой области, которая отвечает за максимальную остроту зрения</div>
+        </div>
+        <div className='column'>
+          <img src='/images/slider_glaz.png' alt='' />
+        </div>
+      </div>,
+      <div className='content'>
+        <div className='column'>
+          <div className='title'>зрения причина ухудшения В чем?</div>
+        </div>
+
+      </div>,
+      <div className='content'>
+        <div className='column'>
+          <div className='title'>причина ухудшения зрения В чем ?</div>
+        </div>
+
+      </div>]
   }
 
   changeSlide = (move) => {
@@ -137,16 +141,15 @@ export class Slider extends Component {
     return (
 
       <SliderStyled>
-        <div className={`left ${this.state.currSlide === 0 ? 'unactive':''}`} onClick={() => this.changeSlide(-1)}><img src='/images/icon_arrow.png' alt='' /></div>
-        <div className={`right ${this.state.currSlide === this.state.slides.length - 1 ? 'unactive':''}`} onClick={() => this.changeSlide(1)}><img src='/images/icon_arrow.png' alt='' /></div>
+        <div className={`left ${this.state.currSlide === 0 ? 'unactive' : ''}`} onClick={() => this.changeSlide(-1)}><img src='/images/icon_arrow.png' alt='' /></div>
+        <div className={`right ${this.state.currSlide === this.state.slides.length - 1 ? 'unactive' : ''}`} onClick={() => this.changeSlide(1)}><img src='/images/icon_arrow.png' alt='' /></div>
 
-          {this.state.slides[this.state.currSlide]}
+        {this.state.slides[this.state.currSlide]}
 
         <ul className='frames'>
           {this.state.slides.map((item, i) =>
             <li key={i} className={this.state.currSlide === i ? 'active' : ''} onClick={() => this.changeli(i)}>{i + 1}</li>
           )}
-
         </ul>
       </SliderStyled>
 
