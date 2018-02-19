@@ -1,5 +1,5 @@
-import React from 'react';
-import styled, {css} from 'styled-components'
+import React, { Component } from 'react';
+import styled, { css } from 'styled-components'
 
 const sizes = {
   unlim: 10000,
@@ -83,21 +83,63 @@ const SliderStyled = styled.div`
   }
   `
 
-export const Slider = () => 
-  <SliderStyled>
-    <div className='left'><img src='/images/icon_arrow.png' alt=''/></div>
-    <div className='right'><img src='/images/icon_arrow.png' alt=''/></div>
-    <div className='column'>
-      <div className='title'>В чем причина ухудшения зрения?</div>
-      <div className='text'>Любой свет, особенно интенсивный искусственный, повреждает глаза. Световые лучи, проходя сквозь глаз, фокусируются на сетчатке в области желтого пятна - особой области, которая отвечает за максимальную остроту зрения</div>
-    </div>
-    <div className='column'>
-      <img src='/images/slider_glaz.png' alt=''/>
-    </div>
-    <ul className='frames'>
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
-      <li>4</li>
-    </ul>
-  </SliderStyled>
+
+export class Slider extends Component {
+
+  state = {
+    currSlide: 0,
+    slides: []
+  }
+
+  changeSlide = (move) => {
+    let limit = this.state.slides.length - 1;
+
+    let right = move === 1 && 'right';
+
+    let currSlide = this.state.currSlide + move;
+
+    if (currSlide > limit) {
+      currSlide = 0
+    } else if (currSlide < 0) {
+      currSlide = limit;
+    }
+
+    this.setState({currSlide});
+
+  };
+
+  _moveBack = () => {
+    this.changeSlide(-1)
+  };
+
+  _moveForward = () => {
+    this.changeSlide(1)
+  };
+
+  componentDidUpdate(){
+    console.log(this.state)
+  }
+  render() {
+    return (
+
+      <SliderStyled>
+        <div className='left' onClick={this._moveBack}><img src='/images/icon_arrow.png' alt='' /></div>
+        <div className='right' onClick={this._moveForward}><img src='/images/icon_arrow.png' alt='' /></div>
+        <div className='column'>
+          <div className='title'>В чем причина ухудшения зрения?</div>
+          <div className='text'>Любой свет, особенно интенсивный искусственный, повреждает глаза. Световые лучи, проходя сквозь глаз, фокусируются на сетчатке в области желтого пятна - особой области, которая отвечает за максимальную остроту зрения</div>
+        </div>
+        <div className='column'>
+          <img src='/images/slider_glaz.png' alt='' />
+        </div>
+        <ul className='frames'>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+        </ul>
+      </SliderStyled>
+
+    )
+  }
+} 

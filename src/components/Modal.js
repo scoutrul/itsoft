@@ -25,13 +25,13 @@ const ModalStyled = styled.div`
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		z-index: 20
 	}
 	.body {
 		opacity:0;
 		animation: ${Animation} .2s ease 1;
 		animation-fill-mode: forwards;
 		min-width: 320px;
-		min-height: 480px;
 		background-color: white;
 		border-radius: 5px;
 		padding: 25px;
@@ -41,9 +41,6 @@ const ModalStyled = styled.div`
 
 
 export default class Modal extends Component {
-	componentDidMount(){
-		console.log(this)
-	}
 	render() {
 		return ReactDOM.createPortal(
 			<ModalStyled>{this.props.children}</ModalStyled>,

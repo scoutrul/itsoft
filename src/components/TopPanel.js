@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled, { css } from 'styled-components'
 
 import Modal from './Modal'
+import MyForm from './Form'
 
 const sizes = {
   tablet: 1000,
@@ -36,11 +37,14 @@ export class TopPanel extends Component {
   }
 
   modalToggle = (e) => {
+    e.preventDefault();
     this.setState(({modal})=>{
       return {modal: !modal} })
   }
 
+  
   render() {
+
     return (
       <TopPanelStyled>
         <div className='menuTogger' onClick={this.props.menuTogger}>menuTogger</div>
@@ -54,11 +58,10 @@ export class TopPanel extends Component {
           {this.state.modal && <Modal>
             <div className='container' onClick={this.modalToggle}>
               <div className='body' onClick={(e)=>e.stopPropagation()}>
-                <form>
-                  <input />
-                  <input />
-                </form>
-                <div onClick={this.modalToggle}>Close</div>
+
+                <MyForm/>
+
+                <button onClick={this.modalToggle}>Close</button>
               </div>
             </div>
           </Modal>}
@@ -66,5 +69,4 @@ export class TopPanel extends Component {
       </TopPanelStyled>
     )
   }
-
 }
